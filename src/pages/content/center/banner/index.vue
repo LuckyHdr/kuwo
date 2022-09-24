@@ -70,9 +70,5 @@ export default {
 .swiper-pagination-bullet {
     background: hsla(0,0%,100%,.8);
 }
-div.swiper-button-prev{
-  background: #000;
-  margin: -22px 0px 0px;
-}
 </style>>
 

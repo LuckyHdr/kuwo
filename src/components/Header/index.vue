@@ -121,9 +121,12 @@ export default {
   methods: {
     goSearch(){
       if(this.$route.query){
-                let location = {name:"search",params:{keyword:this.keyword || undefined}};
+        if(this.keyword != ''){
+          let location = {name:"search",params:{keyword:this.keyword || undefined}};
                 location.query = this.$route.query;
                 this.$router.push(location);
+        }
+                
             }
     }
   },

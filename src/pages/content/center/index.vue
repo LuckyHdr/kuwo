@@ -5,10 +5,10 @@
         <div class="sub_nav">
             <div >
                   <a href="javascript:;" class="active" >推荐</a
-                  ><a href="javascript:;" >排行榜</a
-                  ><a href="javascript:;" >歌手</a
-                  ><a href="javascript:;" >歌单</a
-                  ><a href="javascript:;" >MV</a>
+                  ><a href="http://www.kuwo.cn/rankList" >排行榜</a
+                  ><a href="http://www.kuwo.cn/singers" >歌手</a
+                  ><a href="http://www.kuwo.cn/playlists" >歌单</a
+                  ><a href="http://www.kuwo.cn/mvs" >MV</a>
             </div>
         </div>
         <!-- 轮播图区 -->
@@ -61,20 +61,21 @@
                   </ul>
           </div>
         </div>
-    <!-- 推荐歌单 -->
-    <div class="rec_nav">
+        <!-- 推荐歌单 -->
+      <div class="rec_nav">
       <h3 class="title">推荐歌单</h3>
       <div>
-        <a href="javascript:;" class="active">每日推荐</a
-        ><a href="javascript:;">翻唱</a><a href="javascript:;">网络</a
-        ><a href="javascript:;">伤感</a><a href="javascript:;">欧美</a>
+        <!-- 这里懒得写mock了 就这吧 -->
+        <a href="javascript:;" :class="flag ? 'active' : ''"  @click="getPlayList('meirituijian')">每日推荐</a
+        ><a href="javascript:;"  @click="getPlayList('fanchang')">翻唱</a><a href="javascript:;" @click="getPlayList('wangluo')" >网络</a
+        ><a href="javascript:;"  @click="getPlayList('shanggan')">伤感</a><a href="javascript:;" @click="getPlayList('oumei')">欧美</a>
       </div>
       <a href="/playlists" class="more flex_c"
         ><span>更多</span><i class="iconfont icon-icon_pagedown_"></i
       ></a>
     </div>
     <div class="rec_list">
-      <div class="item">
+      <div class="item" v-for="(plist,index) in this.playlist" :key="plist.id">
         <div class="pic_out">
           <div class="cover">
             <span class="play icon_play"
@@ -82,112 +83,23 @@
             ></span>
           </div>
           <img
-            alt="每日最新单曲推荐"
-            src="	https://img1.kuwo.cn/star/userpl2015/10/13/1649904612537_132026710_500.jpg"
+            :alt="plist.info"
+            :src="plist.img"
             class="pic"
           />
         </div>
         <p class="name">
-          <span title="每日最新单曲推荐">每日最新单曲推荐</span>
+          <span :title="plist.name">{{plist.name}}</span>
         </p>
         <p class="count" style="display: ">
           <i class="iconfont icon-icon_play_"></i>20359.6万
         </p>
       </div>
-      <div class="item">
-        <div class="pic_out">
-          <div class="cover">
-            <span class="play icon_play"
-              ><i class="iconfont icon-icon_play_1"></i
-            ></span>
-          </div>
-          <img
-            alt="经典老歌丨音乐响起，莫名的感动涌上心头"
-            src="https://img1.kuwo.cn/star/userpl2015/58/87/1542417610522_184816158_500.jpg"
-            class="pic"
-          />
-        </div>
-        <p class="name">
-          <span title="经典老歌丨音乐响起，莫名的感动涌上心头"
-            >经典老歌丨音乐响起，莫名的感动涌上心头</span
-          >
-        </p>
-        <p class="count" style="display: ">
-          <i class="iconfont icon-icon_play_"></i>814.9万
-        </p>
-      </div>
-      <div class="item">
-        <div class="pic_out">
-          <div class="cover">
-            <span class="play icon_play"
-              ><i class="iconfont icon-icon_play_1"></i
-            ></span>
-          </div>
-          <img
-            alt="【Jazz-funk】身躯爆发 灵魂释放"
-            src="https://img1.kuwo.cn/star/userpl2015/74/18/1541398121349_395182674_500.jpg"
-            class="pic"
-          />
-        </div>
-        <p class="name">
-          <span title="【Jazz-funk】身躯爆发 灵魂释放"
-            >【Jazz-funk】身躯爆发 灵魂释放</span
-          >
-        </p>
-        <p class="count" style="display: ">
-          <i class="iconfont icon-icon_play_"></i>24.0万
-        </p>
-      </div>
-      <div class="item">
-        <div class="pic_out">
-          <div class="cover">
-            <span class="play icon_play"
-              ><i class="iconfont icon-icon_play_1"></i
-            ></span>
-          </div>
-          <img
-            alt="『Jazz』融合律动，性感注脚。"
-            src="https://img1.kuwo.cn/star/userpl2015/57/40/1570333252878_407432857_500.jpg"
-            class="pic"
-          />
-        </div>
-        <p class="name">
-          <span title="『Jazz』融合律动，性感注脚。"
-            >『Jazz』融合律动，性感注脚。</span
-          >
-        </p>
-        <p class="count" style="display: ">
-          <i class="iconfont icon-icon_play_"></i>18.8万
-        </p>
-      </div>
-      <div class="item">
-        <div class="pic_out">
-          <div class="cover">
-            <span class="play icon_play"
-              ><i class="iconfont icon-icon_play_1"></i
-            ></span>
-          </div>
-          <img
-            alt="【华语翻唱】无损高品质试音发烧女声"
-            src="https://img1.kuwo.cn/star/userpl2015/39/41/1531725564827_412265939_500.jpg"
-            class="pic"
-          />
-        </div>
-        <p class="name">
-          <span title="【华语翻唱】无损高品质试音发烧女声"
-            >【华语翻唱】无损高品质试音发烧女声</span
-          >
-        </p>
-        <p class="count" style="display: ">
-          <i class="iconfont icon-icon_play_"></i>119.9万
-        </p>
-      </div>
-      <!----><!----><!----><!----><!----><!---->
     </div>
     <!-- 排行榜 -->
     <div>
       <div class="rec_nav">
-        <h3 class="title">排行榜</h3>
+         <h3 class="title">排行榜</h3>
         <a href="/rankList" class="more flex_c"
           ><span>更多</span><i class="iconfont icon-icon_pagedown_"></i
         ></a>
@@ -612,9 +524,25 @@
 import Banner from "./banner/index.vue";
 export default {
   name: "center",
+  data() {
+    return {
+      playlist:[],
+      flag: false
+    }
+  },
   components: {
     Banner,
   },
+  mounted() {
+    this.getPlayList('meirituijian');
+  },
+  methods:{
+    async getPlayList(names){
+      let result = await this.$API.reqPlayList(names);
+      this.flag = true
+      this.playlist = result.data
+    }
+  }
 };
 </script>
 
@@ -688,7 +616,7 @@ export default {
             font-size: 16px;
             z-index: 99;
             padding: 0 13.5%;
-            background: rgba(0, 0, 0, 0.15);
+            background: rgba(11, 227, 112, 0.96);
         }
         
         .banner_out .download .split {
@@ -791,7 +719,7 @@ a.active:after {
 
 .item .pic_out .cover .play .iconfont {
   font-size: 30px;
-  color: #333;
+  color: #333;  
 }
 
 .item .pic_out .pic {
@@ -1057,4 +985,5 @@ a.active:after {
   font-size: 12px;
   color: #999;
 }
+
 </style>

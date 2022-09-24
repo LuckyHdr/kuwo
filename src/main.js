@@ -14,6 +14,11 @@ import * as API from "@/api"
 
 //引入MockServer js----mock数据
 import '@/mock/mockServe';
+//引如element
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
 
 new Vue({
     render: h => h(App),
